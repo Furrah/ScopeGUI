@@ -31,6 +31,7 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
 
         self.pushButton.clicked.connect(self.GetDataButton)
         self.pushButton_2.clicked.connect(self.ScopeConnect)
+        
 
     def EmbedPlot(self):
 
@@ -43,20 +44,35 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
         self.widget.setLayout(self.layout)
 
 
+
+
     def GetDataButton(self):
 
+        C1_state = self.checkBox.isChecked()       
+        C2_state = self.checkBox_2.isChecked()  
+        C3_state = self.checkBox_3.isChecked()  
+        C4_state = self.checkBox_4.isChecked()
+
+        channelStates = [C1_state, C2_state, C3_state, C4_state]
+
+        # for channel in channelStates:
+            # if channel == True:
+                # self.Oscilloscope.getData()
+
         self.sc.axes.plot([0,1,2,3,4], [10,1,20,3,40])
-        self.sc.draw()
+        self.sc.draw_idle()
 
 
     def ScopeConnect(self):
+
         hostname = self.lineEdit.text()
         print(hostname)
         self.scope = hardware.Oscilloscope(hostname)
-        
+
         '''
         add an LED or notifier that the host has been connected to 
         '''
+
 
 
 
