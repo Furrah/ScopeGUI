@@ -55,11 +55,15 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
 
         channelStates = [C1_state, C2_state, C3_state, C4_state]
 
-        # for channel in channelStates:
-            # if channel == True:
-                # self.Oscilloscope.getData()
+        channel_code = ['C1', 'C2', 'C3', 'C4']
 
-        self.sc.axes.plot([0,1,2,3,4], [10,1,20,3,40])
+
+
+        for i, channel in enumerate(channelStates):
+            if channel == True:
+                data = self.Oscilloscope.getData(channel_code[i])
+                self.sc.axes.plot(data[0],data[1])
+        # self.sc.axes.plot([0,1,2,3,4], [10,1,20,3,40])
         self.sc.draw_idle()
 
 
