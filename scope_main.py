@@ -38,6 +38,8 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign.Ui_MainWindow):
         self.checkBox_5.stateChanged.connect(self.CheckBoxGrid)
         self.pushButton_saveData.clicked.connect(self.saveFile)
 
+        self.pushButton.setEnabled(False)
+
         self.storedData = []
         self.fileNames = []
 
@@ -53,6 +55,7 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign.Ui_MainWindow):
 
     def clearPlot(self):
         self.storedData = []
+        self.fileNames = []
         self.sc.axes.clear()
         self.sc.draw_idle()
 
@@ -94,7 +97,7 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign.Ui_MainWindow):
         hostname = self.lineEdit.text()
         # print(hostname)
         self.scope = hardware.Oscilloscope(hostname)
-
+        self.pushButton.setEnabled(True)
         '''
         add an LED or notifier that the host has been connected to 
         '''
@@ -102,8 +105,12 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign.Ui_MainWindow):
     def saveFile(self):
         directory = QtWidgets.QFileDialog.getExistingDirectory()
 
-        for name, dat in zip(self.fileNames, self.storedData):
-            np.save(directory+'/'+ name, dat )
+
+        filename = self.lineEdit_fileName.text()
+
+        if len(directory)>0:
+            for name, dat in zip(self.fileNames, self.storedData):
+                np.save(directory+'/'+ filename + name, dat )
 
 
 
