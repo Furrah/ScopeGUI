@@ -7,7 +7,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 matplotlib.use('Qt5Agg')
 
-import ScopeGuiDesign_V0
+import ScopeGuiDesign
 import hardware
 
 #oscillopscope_host = 'bi-iq-lab-scope-1'
@@ -19,17 +19,20 @@ class MplCanvas(FigureCanvasQTAgg):
         super(MplCanvas, self).__init__(fig)
 
 
-class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
+class Window(QtWidgets.QMainWindow, ScopeGuiDesign.Ui_MainWindow):
     def __init__(self):
 
         super(self.__class__, self).__init__()
         self.setupUi(self)  # This is defined in design.py file automatically
         self.EmbedPlot()
+        self.setWindowTitle("ScopeGUI")
+
 
         self.lineEdit.setText('bi-iq-lab-scope-1')
 
         self.pushButton.clicked.connect(self.GetDataButton)
         self.pushButton_2.clicked.connect(self.ScopeConnect)
+        self.pushButton_ClearPlot.clicked.connect(self.clearPlot)
         
     def EmbedPlot(self):
 
