@@ -19,7 +19,6 @@ class MplCanvas(FigureCanvasQTAgg):
         super(MplCanvas, self).__init__(fig)
 
 
-
 class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
     def __init__(self):
 
@@ -32,19 +31,19 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
         self.pushButton.clicked.connect(self.GetDataButton)
         self.pushButton_2.clicked.connect(self.ScopeConnect)
         
-
     def EmbedPlot(self):
 
         self.sc = MplCanvas(self, width=5, height=4, dpi=100)
         self.toolbar = NavigationToolbar(self.sc, self)
-        self.layout = QtWidgets.QVBoxLayout()
 
+        self.layout = QtWidgets.QVBoxLayout()
         self.layout.addWidget(self.sc)
         self.layout.addWidget(self.toolbar)
         self.widget.setLayout(self.layout)
 
-
-
+    def clearPlot(self):
+        self.sc.axes.clear()
+        self.sc.draw_idle()
 
     def GetDataButton(self):
 
@@ -57,20 +56,17 @@ class Window(QtWidgets.QMainWindow, ScopeGuiDesign_V0.Ui_MainWindow):
 
         channel_code = ['C1', 'C2', 'C3', 'C4']
 
-
-
         for i, channel in enumerate(channelStates):
             if channel == True:
-                data = self.Oscilloscope.getData(channel_code[i])
+                data = self.scope.getData(channel_code[i])
                 self.sc.axes.plot(data[0],data[1])
-        # self.sc.axes.plot([0,1,2,3,4], [10,1,20,3,40])
-        self.sc.draw_idle()
 
+        self.sc.draw_idle()
 
     def ScopeConnect(self):
 
         hostname = self.lineEdit.text()
-        print(hostname)
+        # print(hostname)
         self.scope = hardware.Oscilloscope(hostname)
 
         '''
