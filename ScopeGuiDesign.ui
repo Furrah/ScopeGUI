@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1476</width>
-    <height>859</height>
+    <width>1280</width>
+    <height>751</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -201,6 +201,13 @@
          <widget class="QLineEdit" name="lineEdit_fileName"/>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButton_selectFolder">
+          <property name="text">
+           <string>Select Folder</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="pushButton_saveData">
           <property name="text">
            <string>Save Data</string>
@@ -231,8 +238,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1476</width>
-     <height>21</height>
+     <width>1280</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

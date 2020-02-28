@@ -2,16 +2,18 @@
 
 # Form implementation generated from reading ui file 'ScopeGuiDesign.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.3
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1476, 859)
+        MainWindow.resize(1280, 751)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -89,6 +91,9 @@ class Ui_MainWindow(object):
         self.lineEdit_fileName = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_fileName.setObjectName("lineEdit_fileName")
         self.verticalLayout.addWidget(self.lineEdit_fileName)
+        self.pushButton_selectFolder = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_selectFolder.setObjectName("pushButton_selectFolder")
+        self.verticalLayout.addWidget(self.pushButton_selectFolder)
         self.pushButton_saveData = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_saveData.setObjectName("pushButton_saveData")
         self.verticalLayout.addWidget(self.pushButton_saveData)
@@ -98,7 +103,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1476, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1280, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -121,5 +126,5 @@ class Ui_MainWindow(object):
         self.checkBox_5.setText(_translate("MainWindow", "Grid"))
         self.pushButton_ClearPlot.setText(_translate("MainWindow", "Clear Plot"))
         self.label_2.setText(_translate("MainWindow", "File Name"))
+        self.pushButton_selectFolder.setText(_translate("MainWindow", "Select Folder"))
         self.pushButton_saveData.setText(_translate("MainWindow", "Save Data"))
-
